@@ -66,11 +66,11 @@
         let mensagemReset = document.getElementById('mensagemReset');
 
         resetar.addEventListener('click', function(){
-            mensagemResultado.textContent = mensagemReset.value;
-            mensagemReset.value="";
+            count = 0; // zera o contador
             atualizarContador();
-
-
+            mensagemResultado.textContent = ""; // limpa o parágrafo da mensagem
+            mensagemInput.value = ""; // limpa o input
+            contadorCaracteres.textContent = "0"; // zera o contador de caracteres
         });
         
     </script>
