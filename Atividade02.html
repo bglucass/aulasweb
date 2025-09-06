@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 02 06/09</title>
+</head>
+<body>
+    <h1>Contador de cliques</h1>
+    <button id="incrementar">+</button>
+    <button id="decrementar">-</button>
+    <p id="contador"></p>
+
+    <hr>
+
+    <input type="text" id="mensagem">
+    <span id="contadorCaracteres">0</span> caracteres
+    <p id="mensagemResultado"></p>
+    
+    <hr>
+
+    <button id="reset">resetar</button>
+    <p id="mensagemReset"> </p>
+
+    <script>
+        let count = 0;
+
+        const contadorElemento = document.getElementById('contador');
+        const incrementarBotao = document.getElementById('incrementar');
+        const decrementarBotao = document.getElementById('decrementar');
+
+        function atualizarContador() {
+            contadorElemento.textContent = count;
+        }
+
+        incrementarBotao.addEventListener('click', () => {
+            count++;
+            atualizarContador();
+        });
+
+        decrementarBotao.addEventListener('click', () => {
+            count = Math.max(0, count - 1); // impede valores negativos
+            atualizarContador();
+        });
+
+        
+        atualizarContador();
+
+        const mensagemInput = document.getElementById('mensagem');
+        const mensagemResultado = document.getElementById('mensagemResultado');
+        const contadorCaracteres = document.getElementById('contadorCaracteres');
+
+        mensagemInput.addEventListener('input', function() {
+            contadorCaracteres.textContent = mensagemInput.value.length;
+        });
+
+        mensagemInput.addEventListener('keydown', function(event) {
+            if (event.key === "Enter") {
+                mensagemResultado.textContent = mensagemInput.value;
+                mensagemInput.value = "";
+                contadorCaracteres.textContent = "0";
+            }
+        });
+
+        let resetar = document.getElementById('reset');
+        let mensagemReset = document.getElementById('mensagemReset');
+
+        resetar.addEventListener('click', function(){
+            mensagemResultado.textContent = mensagemReset.value;
+            mensagemReset.value="";
+            atualizarContador();
+
+
+        });
+        
+    </script>
+</body>
+</html>
